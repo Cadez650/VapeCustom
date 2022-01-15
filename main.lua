@@ -3,3 +3,5 @@ local function getScript(URL)
 end
 
 local mainVape = loadstring(getScript('best.lua'))
+
+print('Vape Custom: Loading Vape Custom...')
