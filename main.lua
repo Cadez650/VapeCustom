@@ -1,4 +1,5 @@
 local function getScript(URL)
+    print('https://raw.githubusercontent.com/Cadez650/VapeCustom/main/'..url)
     return loadstring(game:HttpGet('https://raw.githubusercontent.com/Cadez650/VapeCustom/main/'..url, true))
 end
 
