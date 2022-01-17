@@ -198,23 +198,6 @@ local function findTouchInterest(tool)
 end
 
 local skywars = {}
-local getfunctions
-runcode(function()
-    getfunctions = function()
-		local Flamework = require(game:GetService("ReplicatedStorage")["rbxts_include"]["node_modules"]["@flamework"].core.out).Flamework
-		repeat task.wait() until Flamework.isInitialized
-        local Events = require(game:GetService("ReplicatedStorage").TS.events).GlobalEvents.client
-		skywars = {
-			["EventHandler"] = Events,
-			["HotbarController"] = Flamework.resolveDependency("client/controllers/hotbar-controller@HotbarController"),
-			["ReplicaHandler"] = require(lplr.PlayerScripts.TS.replicas).Replicas,
-			["BlockUtil"] = require(game:GetService("ReplicatedStorage").TS.util["block-util"]).BlockUtil,
-			["ItemTable"] = require(game:GetService("ReplicatedStorage").TS.item.item).Items
-		}
-    end
-end)
-
-getfunctions()
 
 local function getSword()
 	for i,v in ipairs(skywars["HotbarController"]:getHotbarItems()) do
