@@ -231,6 +231,10 @@ end
 runcode(function()
 	local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
-		["Function"] = function(callback) if not callback then return; end; print("A WOKRING VAPE") end;
+		["Function"] = function(callback) 
+			if callback then
+				print("Reporting enabled")
+			end
+		end
 	})
 end)
