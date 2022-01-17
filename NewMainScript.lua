@@ -22,7 +22,7 @@ local function checkassetversion()
 		return nil
 	end
 end
-
+--
 if not (getasset and requestfunc and queueteleport) then
 	print("Vape not supported with your exploit.")
 	return
