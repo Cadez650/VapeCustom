@@ -233,7 +233,7 @@ runcode(function()
 	local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
 		["HoverText"] = "Auto report kiddos!",
-		["HoverText"] = function() return "v1" end;
+		["ExtraText"] = function() return "v1" end;
 		["Function"] = function(callback) 
 			if callback then
 				print("Reporting enabled")
