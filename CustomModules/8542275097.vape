@@ -229,8 +229,10 @@ local function equipItem(itemnam)
 end
 
 runcode(function()
-	local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"].CreateOptionsButton({
+	local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["CombatWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
+		["HoverText"] = "Auto report kiddos!",
+		["HoverText"] = function() return "v1" end;
 		["Function"] = function(callback) 
 			if callback then
 				print("Reporting enabled")
