@@ -1,11 +1,7 @@
 repeat task.wait() until game:IsLoaded() == true
 
 local function GetURL(scripturl)
-	if shared.VapeDeveloper then
-		return readfile("vape/"..scripturl)
-	else
 		return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..scripturl, true)
-	end
 end
 local getasset = getsynasset or getcustomasset
 if getasset == nil and getgenv().getcustomasset == nil then
