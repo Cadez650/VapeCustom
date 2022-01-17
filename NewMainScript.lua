@@ -13,7 +13,7 @@ local requestfunc = syn and syn.request or http and http.request or http_request
 
 local function checkassetversion()
 	local req = requestfunc({
-		Url = "https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/assetsversion.dat",
+		Url = "https://raw.githubusercontent.com/Cadez650/VapeCustom/main/assetsversion.dat",
 		Method = "GET"
 	})
 	if req.StatusCode == 200 then
