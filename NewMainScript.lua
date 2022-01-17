@@ -68,7 +68,7 @@ local checkpublicreponum = 0
 local checkpublicrepo
 checkpublicrepo = function(id)
 	local suc, req = pcall(function() return requestfunc({
-		Url = "https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/CustomModules/"..id..".vape",
+		Url = "https://raw.githubusercontent.com/Cadez650/VapeCustom/main/CustomModules/"..id..".vape",
 		Method = "GET"
 	}) end)
 	if not suc then
