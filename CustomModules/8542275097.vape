@@ -229,7 +229,7 @@ local function equipItem(itemnam)
 end
 
 runcode(function()
-	local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+	local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"].CreateOptionsButton({
 		["Name"] = "AutoReport",
 		["Function"] = function(callback) 
 			if callback then
