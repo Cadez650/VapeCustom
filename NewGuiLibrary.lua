@@ -23,12 +23,8 @@ if shared.VapeExecuted then
 	}
 
 	local function GetURL(scripturl)
-		if shared.VapeDeveloper then
-			return readfile("vape/"..scripturl)
-		else
-			return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..scripturl, true)
-		end
-	end
+		return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/main/"..scripturl, true)
+end
 
 	local function getprofile()
 		for i,v in pairs(api["Profiles"]) do
