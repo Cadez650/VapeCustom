@@ -433,22 +433,18 @@ runcode(function()
 		end
 	})
 end)
---
+
 runcode(function()
-	local AutoReport = {["Enabled"] = false}
-	local Autorep = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+	local autoReport = {["Enabled"] = false}
+	local autoRep = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
 		["Function"] = function(callback)
 			if callback then
-				local i = 1
 				BindToStepped("AutoReport", 1, function()
 					for i,v in next, game.Players:GetPlayers() do
 						if v.UserId ~= game.Players.LocalPlayer.UserId then
-							local args = {
-								[1] = v.UserId
-							}
-							print("Reported " .. v.Name)
-							game:GetService("ReplicatedStorage"):FindFirstChild("events-shared/events@GlobalEvents").Report:FireServer(unpack(args))
+							game:GetService("ReplicatedStorage")["events-shared/events@GlobalEvents"].Report:FireServer(v.UserId)
+							warn("Reported " .. v.Name)
 						end
 					end
 				end)
