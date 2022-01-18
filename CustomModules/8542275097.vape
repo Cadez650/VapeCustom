@@ -456,22 +456,3 @@ runcode(function()
 		end
 	})
 end)
-
-runcode(function()
-	local velocity = {["Enabled"] = false}
-
-	local AntKB = GuiLibrary["ObjectsThatCanBeSaved"]{"BlantantWindow"}["Api"].CreateOptionsButton({
-		["Name"] = "Velocity",
-		["Function"] = function(callback)
-			if callback then
-				BindToStepped("Velocity", 1, function()
-					local path = game:GetService("Players")["Am_BotYes"].PlayerScripts.TS.controllers["player-velocity-controller"]
-					local module = require(path)
-					module.onStart(5)
-				end)
-			else
-				UnbindFromStepped("Velocity")
-			end
-		end
-	})
-end)
