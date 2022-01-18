@@ -26,7 +26,7 @@ if shared.VapeExecuted then
 		if shared.VapeDeveloper then
 			return readfile("vape/"..scripturl)
 		else
-			return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..scripturl, true)
+			return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..scripturl, true)
 		end
 	end
 
