@@ -457,14 +457,6 @@ runcode(function()
 	})
 end)
 
-autoreportDebounce = AutoReport.CreateSlider({
-	["Name"] = "Debounce",
-	["Min"] = 0,
-	["Max"] = 50,
-	["Function"] = function(val) print(val) end,
-	["Default"] = 25
-})
-
 runcode(function()
 	local velocity = {["Enabled"] = false}
 
