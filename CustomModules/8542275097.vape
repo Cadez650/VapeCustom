@@ -404,7 +404,7 @@ runcode(function()
 	local scaffoldstopmotionval = false
 	local newpos
 	local Scaffold = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "Scaffold",
+		["Name"] = "Yessir",
 		["Function"] = function(callback)
 			if callback then
 				local i = 1
