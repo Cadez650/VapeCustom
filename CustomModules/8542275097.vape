@@ -73,7 +73,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -404,7 +404,7 @@ runcode(function()
 	local scaffoldstopmotionval = false
 	local newpos
 	local Scaffold = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "Yessir",
+		["Name"] = "Scaffold",
 		["Function"] = function(callback)
 			if callback then
 				local i = 1
@@ -444,7 +444,7 @@ runcode(function()
 					for i,v in next, game.Players:GetPlayers() do
 						if v.UserId ~= game.Players.LocalPlayer.UserId then
 							game:GetService("ReplicatedStorage")["events-shared/events@GlobalEvents"].Report:FireServer(v.UserId)
-							warn("Reported " .. v.Name)
+							warn
 						end
 					end
 				end)
