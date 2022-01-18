@@ -23,7 +23,11 @@ if shared.VapeExecuted then
 	}
 
 	local function GetURL(scripturl)
-		return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..scripturl, true)
+		if shared.VapeDeveloper then
+			return readfile("vape/"..scripturl)
+		else
+			return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..scripturl, true)
+		end
 	end
 
 	local function getprofile()
