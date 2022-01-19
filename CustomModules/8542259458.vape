@@ -433,3 +433,21 @@ runcode(function()
 		end
 	})
 end)
+
+local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+	["Name"] = "AutoReport",
+	["Function"] = function(callback) 
+		if callback then
+			BindToStepped("AutoReport", 1, function()
+				for i,v in next, game.Players:GetPlayers() do
+					if v.UserId ~= game.Players.LocalPlayer.UserId then
+						warn("Reported " .. v.Name)
+					end
+				end
+			end)
+		else
+			UnbindFromStepped("AutoReport")
+		end
+	end
+
+})
