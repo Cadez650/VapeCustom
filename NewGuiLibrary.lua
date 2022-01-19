@@ -23,7 +23,11 @@ if shared.VapeExecuted then
 	}
 
 	local function GetURL(scripturl)
-			return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..scripturl, true)
+		if shared.VapeDeveloper then
+			return readfile("vape/"..scripturl)
+		else
+			return game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..scripturl, true)
+		end
 	end
 
 	local function getprofile()
@@ -117,7 +121,7 @@ if shared.VapeExecuted then
 				textlabel:Remove()
 			end)
 			local req = requestfunc({
-				Url = "https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..path:gsub("vape/assets", "assets"),
+				Url = "https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
 				Method = "GET"
 			})
 			writefile(path, req.Body)
