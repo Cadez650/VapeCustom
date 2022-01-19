@@ -697,9 +697,9 @@ runcode(function()
 						end
 					end)
 				end)
-			else
-				UnbindFromStepped("AutoReport")
 			end
+		else
+			UnbindFromStepped("AutoReport")
 		end
 	})
 		debounce = AutoReport.CreateSlider({
