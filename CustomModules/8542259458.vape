@@ -403,7 +403,7 @@ runcode(function()
 	local ScaffoldDiagonal = {["Enabled"] = false}
 	local scaffoldstopmotionval = false
 	local newpos
-	local UwU = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+	local Scaffold = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "Scaffold",
 		["Function"] = function(callback)
 			if callback then
@@ -429,6 +429,26 @@ runcode(function()
 				end)
 			else
 				UnbindFromStepped("Scaffold")
+			end
+		end
+	})
+end)
+
+runcode(function()
+	local AutoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "AutoReport",
+		["Function"] = function(callback)
+			if callback then
+				local i = 1
+				BindToStepped("AutoReport", 1, function()
+					for i,v in next, game.Players:GetPlayers() do
+						if v.UserId ~= game.Players.LocalPlayer.UserId then
+							warn("Reported " .. v.Name)
+						end	
+					end
+				end)
+			else
+				UnbindFromStepped("AutoReport")
 			end
 		end
 	})
