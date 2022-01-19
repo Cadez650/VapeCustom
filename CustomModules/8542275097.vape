@@ -681,16 +681,18 @@ runcode(function()
 	local AutoReport = {["Enabled"] = false}
 	local oldplr 
 	local debounce = {["Value"] = 5}
+	local numDebounce
 	AutoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
 		["Function"] = function(callback)
 			if callback then
 				spawn(function()
-					BindToStepped("AutoReport", debounce, function()
+					BindToStepped("AutoReport", 1, function()
 						for i,v in next, game.Players:GetPlayers() do
 							if v.UserId ~= game.Players.LocalPlayer.UserId then
 								skywars["EventHandler"].Report:fire(v.UserId)
 								print("Reported", v.Name)
+								task.wait(numDebounce or debounce["Value"])
 							end
 						end
 					end)
@@ -702,8 +704,8 @@ runcode(function()
 		["Name"] = "Debounce",
 		["Min"] = 1,
 		["Max"] = 120,
-		["Function"] = function(val) print(val) end,
-		["Default"] = 50
+		["Function"] = function(val) numDebounce = val end,
+		["Default"] = 5
 	})
 end)
 
