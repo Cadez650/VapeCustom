@@ -678,6 +678,32 @@ runcode(function()
 end)
 
 runcode(function()
+	local getDroppedItems;
+
+	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "AutoPickup",
+		["Function"] = function(callback) 
+			if firetouchinterest then
+				if callback then
+					createwarning("AutoPickup", "AutoPickup is now enabled. This could cause performance issues!")
+					BindToStepped("AutoPickup", function() 
+						for i,v in pairs( workspace:GetDescendants() ) do
+							if v.Name == "TouchInterest" then
+									firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+							  end
+						end
+					end)
+				else
+					UnbindFromStepped("AutoPickup")
+				end
+			else
+				createwarning("AutoPickup ERROR", "You're executor dosen't support 'firetouchinterest'!", 3.5)
+			end
+		end
+	})
+end)
+
+runcode(function()
 	local AutoReport = {["Enabled"] = false}
 	local oldplr 
 	local debounce = 10
