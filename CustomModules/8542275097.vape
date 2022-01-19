@@ -678,7 +678,7 @@ runcode(function()
 end)
 
 runcode(function()
-	local getDroppedItems;
+	local getDroppedItems = {["Enabled"] = false};
 
 	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoPickup",
