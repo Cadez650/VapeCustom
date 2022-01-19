@@ -248,194 +248,9 @@ local killauranear
 local Killaura = {["Enabled"] = false}
 GuiLibrary["RemoveObject"]("SpeedOptionsButton")
 local Scaffold = {["Enabled"] = false}
+local AutoReport = {["Enabled"] = false}
 runcode(function()
-	local speedval = {["Value"] = 1}
-	local speedjump = {["Enabled"] = false}
-	local speedjumpheight = {["Value"] = 20}
-	local speedjumpalways = {["Enabled"] = false}
-	local bodyvelo
-	speed = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "Speed",
-		["Function"] = function(callback)
-			if callback then
-				BindToStepped("Speed", 1, function(time, delta)
-					if isAlive() and (GuiLibrary["ObjectsThatCanBeSaved"]["Lobby CheckToggle"]["Api"]["Enabled"] == false or matchState ~= 0) then
-						local jumpcheck = speedjump["Enabled"] and killauranear and Killaura["Enabled"] and (not Scaffold["Enabled"])
-						if (bodyvelo == nil or bodyvelo ~= nil and bodyvelo.Parent ~= lplr.Character.HumanoidRootPart) then
-							bodyvelo = Instance.new("BodyVelocity")
-							bodyvelo.Parent = lplr.Character.HumanoidRootPart
-							bodyvelo.MaxForce = Vector3.new(100000, 0, 100000)
-						else
-							bodyvelo.MaxForce = Vector3.new(100000, 0, 100000)
-							bodyvelo.Velocity = lplr.Character.Humanoid.MoveDirection * speedval["Value"]
-						end
-						if (speedjumpalways["Enabled"] and (not Scaffold["Enabled"]) or jumpcheck) then
-							if (lplr.Character.Humanoid.FloorMaterial ~= Enum.Material.Air) and lplr.Character.Humanoid.MoveDirection ~= Vector3.new(0, 0, 0) then
-								lplr.Character.HumanoidRootPart.Velocity = Vector3.new(lplr.Character.HumanoidRootPart.Velocity.X, speedjumpheight["Value"], lplr.Character.HumanoidRootPart.Velocity.Z)
-							end
-						end
-					end
-				end)
-			else
-				if bodyvelo then
-					bodyvelo:Remove()
-				end
-				UnbindFromStepped("Speed")
-			end
-		end, 
-		["HoverText"] = "Increases your movement."
-	})
-	speedval = speed.CreateSlider({
-		["Name"] = "Speed",
-		["Min"] = 1,
-		["Max"] = 150,
-		["Function"] = function(val) end,
-		["Default"] = 50
-	})
-	speedjumpheight = speed.CreateSlider({
-		["Name"] = "Jump Height",
-		["Min"] = 0,
-		["Max"] = 30,
-		["Default"] = 25,
-		["Function"] = function() end
-	})
-	speedjump = speed.CreateToggle({
-		["Name"] = "AutoJump", 
-		["Function"] = function(callback) 
-			if speedjumpalways["Object"] then
-				speedjump["Object"].ToggleArrow.Visible = callback
-				speedjumpalways["Object"].Visible = callback
-			end
-		end,
-		["Default"] = true
-	})
-	speedjumpalways = speed.CreateToggle({
-		["Name"] = "Always Jump",
-		["Function"] = function() end
-	})
-	speedjumpalways["Object"].BackgroundTransparency = 0
-	speedjumpalways["Object"].BorderSizePixel = 0
-	speedjumpalways["Object"].BackgroundColor3 = Color3.fromRGB(20, 20, 20)
-	speedjumpalways["Object"].Visible = speedjump["Enabled"]
-end)
-
-GuiLibrary["RemoveObject"]("KillauraOptionsButton")
-runcode(function()
-	local killauratargetframe = {["Players"] = {["Enabled"] = false}}
-    local killauramethod = {["Value"] = "Normal"}
-	local killauraothermethod = {["Value"] = "Normal"}
-    local killauraanimmethod = {["Value"] = "Normal"}
-    local killauraaps = {["GetRandomValue"] = function() return 1 end}
-    local killaurarange = {["Value"] = 14}
-    local killauraangle = {["Value"] = 360}
-    local killauratargets = {["Value"] = 10}
-    local killauramouse = {["Enabled"] = false}
-    local killauracframe = {["Enabled"] = false}
-    local killauraautoblock = {["Enabled"] = false}
-    local killauragui = {["Enabled"] = false}
-    local killauratarget = {["Enabled"] = false}
-    local killaurasound = {["Enabled"] = false}
-    local killauraswing = {["Enabled"] = false}
-    local killaurahandcheck = {["Enabled"] = false}
-    local killaurabaguette = {["Enabled"] = false}
-    local killauraanimation = {["Enabled"] = false}
-	local killauradelay = tick()
-	Killaura = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "Killaura",
-		["Function"] = function(callback)
-			if callback then
-				BindToStepped("Killaura", 1, function()
-					if killauradelay <= tick() then
-						local sword = getSword()
-						local plrs = GetAllNearestHumanoidToPosition(killauratargetframe["Players"]["Enabled"], killaurarange["Value"] + 0.5, killauratargets["Value"])
-						local olditem, olditemname = getHeldItem()
-						killauranear = #plrs > 0
-						if sword then
-							for i,plr in pairs(plrs) do
-								equipItem(sword.Name)
-								skywars["EventHandler"].PlayerMelee:fire(plr)
-								equipItem(olditemname)
-							end
-						end
-						killauradelay = tick() + 0.3
-					end
-				end)
-			else
-				UnbindFromStepped("Killaura")
-			end
-		end
-	})
-	killauratargetframe = Killaura.CreateTargetWindow({})
-    killauraaps = Killaura.CreateTwoSlider({
-        ["Name"] = "Attacks per Second",
-        ["Min"] = 1,
-        ["Max"] = 10,
-        ["Function"] = function(val) end, 
-        ["Default"] = 8,
-        ["Default2"] = 10
-    })
-    killaurarange = Killaura.CreateSlider({
-        ["Name"] = "Attack range",
-        ["Min"] = 1,
-        ["Max"] = 50,
-        ["Function"] = function(val) end, 
-        ["Default"] = 50
-    })
-    killauraangle = Killaura.CreateSlider({
-        ["Name"] = "Max angle",
-        ["Min"] = 1,
-        ["Max"] = 360,
-        ["Function"] = function(val) end,
-        ["Default"] = 360
-    })
-    killauratargets = Killaura.CreateSlider({
-        ["Name"] = "Max targets",
-        ["Min"] = 1,
-        ["Max"] = 10,
-        ["Function"] = function(val) end,
-        ["Default"] = 10
-    })
-end)
-
-runcode(function()
-	local ScaffoldTower = {["Enabled"] = false}
-	local ScaffoldDownwards = {["Enabled"] = false}
-	local ScaffoldDiagonal = {["Enabled"] = false}
-	local scaffoldstopmotionval = false
-	local newpos
-	local Scaffold = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "Scaffold",
-		["Function"] = function(callback)
-			if callback then
-				local i = 1
-				BindToStepped("Scaffold", 1, function()
-					local block = getBlock()
-					if block and isAlive() then
-						local newpos = getScaffold((lplr.Character.Head.Position + ((scaffoldstopmotionval == false and lplr.Character.Humanoid.MoveDirection or Vector3.new(0, 0, 0)) * (i * 3.5))) + Vector3.new(0, -math.floor(lplr.Character.Humanoid.HipHeight * (uis:IsKeyDown(Enum.KeyCode.LeftShift) and ScaffoldDownwards["Enabled"] and 5 or 3) * (lplr.Character:GetAttribute("Transparency") and 1.1 or 1)), 0), ScaffoldDiagonal["Enabled"] and (lplr.Character.HumanoidRootPart.Velocity.Y < 2))
-						newpos = Vector3.new(newpos.X, math.clamp(newpos.Y - (uis:IsKeyDown(Enum.KeyCode.Space) and ScaffoldTower["Enabled"] and 4 or 0), -999, 999), newpos.Z)
-						if newpos ~= oldpos then
-							if not skywars["BlockUtil"].canPlace(newpos) then
-								return nil
-							end
-							local olditem, olditemname = getHeldItem()
-							equipItem(block.Name)
-							local v18 = block.Block.Ref:Clone();
-							v18.Position = newpos;
-							v18.Parent = workspace.BlockContainer;
-							skywars["EventHandler"].BlockPlace(newpos)
-							equipItem(olditemname)
-						end
-					end
-				end)
-			else
-				UnbindFromStepped("Scaffold")
-			end
-		end
-	})
-end)
-
-runcode(function()
-	local AutoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+	AutoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
 		["Function"] = function(callback)
 			if callback then
@@ -443,12 +258,12 @@ runcode(function()
 				BindToStepped("AutoReport", 1, function()
 					for i,v in next, game.Players:GetPlayers() do
 						if v.UserId ~= game.Players.LocalPlayer.UserId then
-							warn("Reported " .. v.Name)
+							warn("Reported")
 						end	
 					end
 				end)
 			else
-				UnbindFromStepped("AutoReport")
+				UnbindFromStepped("Scaffold")
 			end
 		end
 	})
