@@ -692,20 +692,12 @@ runcode(function()
 							if v.UserId ~= game.Players.LocalPlayer.UserId then
 								skywars["EventHandler"].Report:fire(v.UserId)
 								print("Reported", v.Name)
-								wait(debounce["Value"])
 							end
 						end
 					end)
 				end)
 			end
 		end
-	})
-		debounce = AutoReport.CreateSlider({
-		["Name"] = "Debounce",
-		["Min"] = 1,
-		["Max"] = 120,
-		["Function"] = function(val) debounce["Value"] = val end,
-		["Default"] = 5
 	})
 end)
 
