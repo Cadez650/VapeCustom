@@ -254,7 +254,6 @@ runcode(function()
 		["Name"] = "AutoReport",
 		["Function"] = function(callback)
 			if callback then
-				local i = 1
 				BindToStepped("AutoReport", 1, function()
 					for i,v in next, game.Players:GetPlayers() do
 						if v.UserId ~= game.Players.LocalPlayer.UserId then
@@ -263,7 +262,7 @@ runcode(function()
 					end
 				end)
 			else
-				UnbindFromStepped("Scaffold")
+				UnbindFromStepped("AutoReport")
 			end
 		end
 	})
