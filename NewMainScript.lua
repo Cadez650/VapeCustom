@@ -4,7 +4,7 @@ local function GetURL(scripturl)
 	if shared.VapeDeveloper then
 		return readfile("vape/"..scripturl)
 	else
-		return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/main/"..scripturl, true)
+		return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..scripturl, true)
 	end
 end
 local getasset = getsynasset or getcustomasset
