@@ -1,10 +1,11 @@
 repeat task.wait() until game:IsLoaded() == true
 
 warn("Loading...")
-
+warn("PlaceID: " .. game.PlaceId )
 local function GetURL(scripturl)
 		return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..scripturl, true)
 end
+
 local getasset = getsynasset or getcustomasset
 if getasset == nil and getgenv().getcustomasset == nil then
 	getgenv().getcustomasset = function(location) return "rbxasset://"..location end
@@ -531,6 +532,7 @@ OnlineProfilesButton.MouseButton1Click:connect(function()
 		end)
 		onlineprofiles = (success and result or {})
 		for i2,v2 in pairs(onlineprofiles) do
+			print(v2 .. " : PlaceID: " .. game.PlaceId )
 			if v2["ProfileGame"] == game.PlaceId then
 				local profilebox = Instance.new("Frame")
 				profilebox.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
