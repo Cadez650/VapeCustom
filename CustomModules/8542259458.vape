@@ -403,8 +403,8 @@ runcode(function()
 	local ScaffoldDiagonal = {["Enabled"] = false}
 	local scaffoldstopmotionval = false
 	local newpos
-	local Scaffold = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "UwU",
+	local UwU = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "Scaffold",
 		["Function"] = function(callback)
 			if callback then
 				local i = 1
