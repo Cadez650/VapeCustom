@@ -680,11 +680,11 @@ end)
 runcode(function()
 	local getDroppedItems;
 
-	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoPickup",
 		["Function"] = function(callback) 
-			if callback then
 			if firetouchinterest then
+				if callback then
 					createwarning("AutoPickup", "AutoPickup is now enabled. This could cause performance issues!")
 					BindToStepped("AutoPickup", function() 
 						for i,v in pairs( workspace:GetDescendants() ) do
