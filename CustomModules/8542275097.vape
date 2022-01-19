@@ -642,7 +642,7 @@ runcode(function()
 	local ChestStealer = {["Enabled"] = false}
 	local ChestBlacklist = {}
 	ChestStealer = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "TeheStealer",
+		["Name"] = "ChestStealer",
 		["Function"] = function(callback)
 			if callback then
 				ChestOpen = skywars["EventHandler"].ChestUpdated:connect(function(one, two, three)
@@ -1270,32 +1270,4 @@ runcode(function()
 		["TempText"] = "phrase (text to respond to)",
 	})
 	AutoToxicPhrases5["Object"].AddBoxBKG.AddBox.TextSize = 12
-end)
-
-runcode(function()
-	local NoFall = {["Enabled"] = false}
-	local nofallconnection
-	local debounce = false
-	NoFall = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "NoFall",
-		["Function"] = function(callback)
-			if callback then
-				if isAlive() then
-					nofallconnection = lplr.Character.Humanoid.StateChanged:connect(function(oldstate, newstate)
-						if newstate == Enum.HumanoidStateType.Landed then
-							lplr.Character.Humanoid:ChangeState(0)
-							lplr.Character.Humanoid:SetStateEnabled(7, false)
-							wait(0.1)
-							lplr.Character.Humanoid:SetStateEnabled(7, true)
-						end
-					end)
-				end
-			else
-				lplr.Character.Humanoid:SetStateEnabled(7, true)
-				if nofallconnection then
-					nofallconnection:Disconnect()
-				end
-			end
-		end
-	})
 end)
