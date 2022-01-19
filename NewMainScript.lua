@@ -72,7 +72,7 @@ local checkpublicreponum = 0
 local checkpublicrepo
 checkpublicrepo = function(id)
 	local suc, req = pcall(function() return requestfunc({
-		Url = "https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/CustomModules/"..id..".vape",
+		Url = "https://raw.githubusercontent.com/Cadez650/VapeCustom/69/CustomModules/"..id..".vape",
 		Method = "GET"
 	}) end)
 	if not suc then
@@ -117,7 +117,7 @@ local function getcustomassetfunc(path)
 			textlabel:Remove()
 		end)
 		local req = requestfunc({
-			Url = "https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/"..path:gsub("vape/assets", "assets"),
+			Url = "https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..path:gsub("vape/assets", "assets"),
 			Method = "GET"
 		})
 		writefile(path, req.Body)
@@ -529,7 +529,7 @@ OnlineProfilesButton.MouseButton1Click:connect(function()
 	if profilesloaded == false then
 		local onlineprofiles = {}
 		local success, result = pcall(function()
-			return game:GetService("HttpService"):JSONDecode((shared.VapeDeveloper and readfile("vape/OnlineProfiles.vapeonline") or game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/OnlineProfiles.vapeonline", true)))
+			return game:GetService("HttpService"):JSONDecode((shared.VapeDeveloper and readfile("vape/OnlineProfiles.vapeonline") or game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/OnlineProfiles.vapeonline", true)))
 		end)
 		onlineprofiles = (success and result or {})
 		for i2,v2 in pairs(onlineprofiles) do
@@ -584,7 +584,7 @@ OnlineProfilesButton.MouseButton1Click:connect(function()
 					profiledownload.BackgroundColor3 = Color3.fromRGB(31, 30, 31)
 				end)
 				profiledownload.MouseButton1Click:connect(function()
-					writefile("vape/Profiles/"..v2["ProfileName"]..tostring(game.PlaceId)..".vapeprofile", (shared.VapeDeveloper and readfile("vape/OnlineProfiles/"..v2["OnlineProfileName"]) or game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/OnlineProfiles/"..v2["OnlineProfileName"], true)))
+					writefile("vape/Profiles/"..v2["ProfileName"]..tostring(game.PlaceId)..".vapeprofile", (shared.VapeDeveloper and readfile("vape/OnlineProfiles/"..v2["OnlineProfileName"]) or game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/OnlineProfiles/"..v2["OnlineProfileName"], true)))
 					GuiLibrary["Profiles"][v2["ProfileName"]] = {["Keybind"] = "", ["Selected"] = false}
 					if table.find(ProfilesTextList["ObjectList"], v2["ProfileName"]) == nil then
 						table.insert(ProfilesTextList["ObjectList"], v2["ProfileName"])
@@ -1303,7 +1303,7 @@ local GUIbind = GUI.CreateGUIBind()
 
 local teleportfunc = game:GetService("Players").LocalPlayer.OnTeleport:Connect(function(State)
     if State == Enum.TeleportState.Started then
-		local teleportstr = 'shared.VapeSwitchServers = true if shared.VapeDeveloper then loadstring(readfile("vape/NewMainScript.lua"))() else loadstring(game:HttpGet("https://raw.githubusercontent.com/7GrandDadPGN/VapeV4ForRoblox/main/NewMainScript.lua", true))() end'
+		local teleportstr = 'shared.VapeSwitchServers = true if shared.VapeDeveloper then loadstring(readfile("vape/NewMainScript.lua"))() else loadstring(game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/NewMainScript.lua", true))() end'
 		if shared.VapeDeveloper then
 			teleportstr = 'shared.VapeDeveloper = true '..teleportstr
 		end
