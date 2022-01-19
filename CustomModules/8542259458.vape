@@ -434,7 +434,8 @@ runcode(function()
 	})
 end)
 
-local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+runcode(function() 
+	local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
 	["Name"] = "AutoReport",
 	["Function"] = function(callback) 
 		if callback then
@@ -451,3 +452,5 @@ local autoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].
 	end
 
 })
+
+end)
