@@ -696,9 +696,9 @@ runcode(function()
 							end
 						end
 					end)
+				end)
 			end
 		end
-	end)
 	})
 		debounce = AutoReport.CreateSlider({
 		["Name"] = "Debounce",
