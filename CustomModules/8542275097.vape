@@ -702,7 +702,7 @@ runcode(function()
 		["Name"] = "Debounce",
 		["Min"] = 1,
 		["Max"] = 120,
-		["Function"] = function(val) end,
+		["Function"] = function(val) print(val) end,
 		["Default"] = 50
 	})
 end)
