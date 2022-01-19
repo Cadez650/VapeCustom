@@ -14,7 +14,6 @@ local getasset = getsynasset or getcustomasset
 local RenderStepTable = {}
 local StepTable = {}
 
-warn("Initilizing!")
 
 local function BindToRenderStep(name, num, func)
 	if RenderStepTable[name] == nil then
@@ -251,6 +250,7 @@ GuiLibrary["RemoveObject"]("SpeedOptionsButton")
 local Scaffold = {["Enabled"] = false}
 local AutoReport = {["Enabled"] = false}
 runcode(function()
+	warn("Initilizing!")
 	AutoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
 		["Function"] = function(callback)
