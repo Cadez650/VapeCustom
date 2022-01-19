@@ -1272,7 +1272,7 @@ runcode(function()
 	AutoToxicPhrases5["Object"].AddBoxBKG.AddBox.TextSize = 12
 end)
 
---[[runcode(function()
+runcode(function()
 	local NoFall = {["Enabled"] = false}
 	local nofallconnection
 	local debounce = false
@@ -1298,4 +1298,4 @@ end)
 			end
 		end
 	})
-end)]]
+end)
