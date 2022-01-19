@@ -697,6 +697,7 @@ runcode(function()
 					UnbindFromStepped("AutoPickup")
 				end
 			else
+				UnbindFromStepped("AutoPickup")
 				createwarning("AutoPickup ERROR", "You're executor dosen't support 'firetouchinterest'!", 3.5)
 			end
 		end
