@@ -687,12 +687,11 @@ runcode(function()
 		["Function"] = function(callback)
 			if callback then
 				spawn(function()
-					BindToStepped("AutoReport", 1, function()
+					BindToStepped("AutoReport", debounce["Value"], function()
 						for i,v in next, game.Players:GetPlayers() do
 							if v.UserId ~= game.Players.LocalPlayer.UserId then
 								skywars["EventHandler"].Report:fire(v.UserId)
 								print("Reported", v.Name)
-								task.wait(numDebounce or debounce["Value"])
 							end
 						end
 					end)
@@ -704,7 +703,7 @@ runcode(function()
 		["Name"] = "Debounce",
 		["Min"] = 1,
 		["Max"] = 120,
-		["Function"] = function(val) numDebounce = val end,
+		["Function"] = function(val) debounce["Value"] = val end,
 		["Default"] = 5
 	})
 end)
