@@ -1286,7 +1286,7 @@ runcode(function()
 							lplr.Character.Humanoid:ChangeState(0)
 							lplr.Character.Humanoid:SetStateEnabled(7, false)
 							wait(0.1)
-							--lplr.Character.Humanoid:SetStateEnabled(7, true)
+							lplr.Character.Humanoid:SetStateEnabled(7, true)
 						end
 					end)
 				end
