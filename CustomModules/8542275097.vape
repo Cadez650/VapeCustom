@@ -696,11 +696,11 @@ runcode(function()
 							end
 						end
 					end)
-				end)
+			else
+				UnbindFromStepped("AutoReport")
 			end
-		else
-			UnbindFromStepped("AutoReport")
 		end
+	end)
 	})
 		debounce = AutoReport.CreateSlider({
 		["Name"] = "Debounce",
