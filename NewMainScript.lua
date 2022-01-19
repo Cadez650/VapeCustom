@@ -1,5 +1,7 @@
 repeat task.wait() until game:IsLoaded() == true
 
+warn("Loading...")
+
 local function GetURL(scripturl)
 		return game:HttpGet("https://raw.githubusercontent.com/Cadez650/VapeCustom/69/"..scripturl, true)
 end
