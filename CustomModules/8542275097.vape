@@ -680,14 +680,13 @@ end)
 runcode(function()
 	local AutoReport = {["Enabled"] = false}
 	local oldplr 
-	local debounce = {["Value"] = 5}
-	local numDebounce
+	local debounce = 10
 	AutoReport = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoReport",
 		["Function"] = function(callback)
 			if callback then
 				spawn(function()
-					BindToStepped("AutoReport", debounce["Value"], function()
+					BindToStepped("AutoReport", debounce, function()
 						for i,v in next, game.Players:GetPlayers() do
 							if v.UserId ~= game.Players.LocalPlayer.UserId then
 								skywars["EventHandler"].Report:fire(v.UserId)
