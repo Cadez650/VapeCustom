@@ -678,30 +678,30 @@ runcode(function()
 	})
 end)
 
-runcode(function()
-	local AutoPickup = {["Enabled"] = false}
-	AutoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "AutoPickup",
-		["Function"] = function(callback)
-			if callback then
-				spawn(function()
-					BindToStepped("AutoPickup", debounce, function()
-						if isAlive() then
-							for i,v in pairs(workspace:GetDescendants) do
-								if v.Name == "TouchInterest" then
-									firetouchinterest(char.Head, v.Parent, 0)
-									print("Picked up " .. v.Parent.Name)
-								end
-							end
-						end
-					end)
-				end)
-			else
-				UnbindFromStepped("AutoPickup")
-			end
-		end
-	})
-end)
+-- runcode(function()
+-- 	local AutoPickup = {["Enabled"] = false}
+-- 	AutoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+-- 		["Name"] = "AutoPickup",
+-- 		["Function"] = function(callback)
+-- 			if callback then
+-- 				spawn(function()
+-- 					BindToStepped("AutoPickup", debounce, function()
+-- 						if isAlive() then
+-- 							for i,v in pairs(workspace:GetDescendants) do
+-- 								if v.Name == "TouchInterest" then
+-- 									firetouchinterest(char.Head, v.Parent, 0)
+-- 									print("Picked up " .. v.Parent.Name)
+-- 								end
+-- 							end
+-- 						end
+-- 					end)
+-- 				end)
+-- 			else
+-- 				UnbindFromStepped("AutoPickup")
+-- 			end
+-- 		end
+-- 	})
+-- end)
 
 
 runcode(function()
