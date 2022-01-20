@@ -368,17 +368,16 @@ runcode(function()
 		["Name"] = "AutoPickup",
 		["Function"] = function(callback)
 			if callback then
-				pickEnabled = true;
-				repeat
+				BindToStepped("AutoPickup", 1, function()
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						if v.Name == "TouchInterest" then
 							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+							print(v.Parent.Name)
 						end
 					end
-					wait(0.25)
-				until not pickEnabled
+				end)
 			else
-				pickEnabled = false
+				UnbindFromStepped("AutoPickup")
 			end
 		end
 	})
