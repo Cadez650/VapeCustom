@@ -679,6 +679,7 @@ end)
 
 runcode(function()
 	local getDroppedItems = {["Enabled"] = false};
+	local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:wait();
 
 	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoPickup",
@@ -688,7 +689,7 @@ runcode(function()
 					BindToStepped("AutoPickup", function()
 					for i,v in pairs( workspace:GetDescendants() ) do
 						if v.Name == "TouchInterest" then
-							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+							firetouchinterest(character:WaitForChild("Head"), v.Parent, 0)
 						end
 					end
 			end)
