@@ -13,6 +13,7 @@ local requestfunc = syn and syn.request or http and http.request or http_request
 local getasset = getsynasset or getcustomasset
 local chatconnection
 local connectionstodisconnect = {}
+local character = lplr.Character or lplr.CharacterAdded:Wait()
 
 local RenderStepTable = {}
 local StepTable = {}
@@ -358,6 +359,29 @@ end)
 
 GuiLibrary["RemoveObject"]("KillauraOptionsButton")
 GuiLibrary["RemoveObject"]("HitBoxesOptionsButton")
+
+runcode(function()
+	local autoPickup = {["Enabled"] = false}
+	autoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "autoPickup",
+		["Function"] = function(callback)
+			if callback then
+				BindToStepped("autoPickup", 1, function()
+					if isAlive() then
+						for i,v in pairs(workspace:GetDescendants()) do
+							if v.Name == "TouchInterest" then
+								firetouchinterest(character.Head, v.Parent, 0)
+							end
+						end
+					end
+				end)
+			else
+				UnbindFromStepped()
+			end
+		end
+	})
+end)
+
 runcode(function()
 	local killaurabox = Instance.new("BoxHandleAdornment")
     killaurabox.Transparency = 0.5
