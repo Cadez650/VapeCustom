@@ -362,22 +362,22 @@ GuiLibrary["RemoveObject"]("KillauraOptionsButton")
 GuiLibrary["RemoveObject"]("HitBoxesOptionsButton")
 
 runcode(function()
-	local autoPickup = {["Enabled"] = false}
-	autoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+	local AutoPickup = {["Enabled"] = false}
+	AutoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoPickup",
 		["Function"] = function(callback)
 			if callback then
-				BindToStepped("AutoPickup", 1, function()
+				BindToStepped("AutoPick", 1, function()
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						if v.Name == "TouchInterest" then
-							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+							firetouchinterest(game.Players.Character.Head, v.Parent, 0)
 						end
 					end
 				end)
 			else
-				UnbindFromStepped("AutoPickup")
+				UnbindFromStepped("AutoPick")
 			end
-		end)
+		end
 	})
 end)
 
