@@ -683,15 +683,8 @@ runcode(function()
 	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoPickup",
 		["Function"] = function(callback) 
-				if callback then
-					CreateNotification("AutoPickup", "AutoPickup is now enabled. This could cause performance issues!", 2.5)
-					BindToStepped("AutoPickup", function()
-					for i,v in pairs( workspace:GetDescendants() ) do
-						if v.Name == "TouchInterest" then
-							firetouchinterest(game.Players.LocalPlayer.Character.Head or game.Players.LocalPlayer.CharacterAdded:Wait().Head, v.Parent, 0)
-						end
-					end
-			end)
+		if callback then
+			print("Test")
 		else
 			UnbindFromStepped("AutoPickup")
 		end
