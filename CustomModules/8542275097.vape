@@ -677,19 +677,19 @@ runcode(function()
 	})
 end)
 
-runcode(function()
-	local getDroppedItems = {["Enabled"] = false};
+-- runcode(function()
+-- 	local getDroppedItems = {["Enabled"] = false};
 
-	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "AutoPickup",
-		["Function"] = function(callback) 
-		if callback then
-			print("Test")
-		else
-			UnbindFromStepped("AutoPickup")
-		end
-	})
-end)
+-- 	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+-- 		["Name"] = "AutoPickup",
+-- 		["Function"] = function(callback) 
+-- 		if callback then
+-- 			print("Test")
+-- 		else
+-- 			UnbindFromStepped("AutoPickup")
+-- 		end
+-- 	})
+-- end)
 
 runcode(function()
 	local AutoReport = {["Enabled"] = false}
