@@ -375,6 +375,7 @@ runcode(function()
 							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
 						end
 					end
+					wait(0.25)
 				until not pickEnabled
 			else
 				pickEnabled = false
