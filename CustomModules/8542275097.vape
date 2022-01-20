@@ -367,10 +367,10 @@ runcode(function()
 		["Function"] = function(callback)
 			if callback then
 				BindToStepped("autoPickup", 1, function()
-					repeat wait() until game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character.Head;
+					repeat wait() until game.Players.LocalPlayer.Character;
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 							if v.Name == "TouchInterest" then
-								firetouchinterest(CadezChar.Head, v.Parent, 0)
+								firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
 							end
 						end
 				end)
