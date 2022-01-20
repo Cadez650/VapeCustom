@@ -374,7 +374,6 @@ runcode(function()
 								firetouchinterest(character.Head, v.Parent, 0)
 							end
 						end
-					end
 				end)
 			else
 				UnbindFromStepped()
