@@ -370,7 +370,7 @@ runcode(function()
 					if isAlive(lplr) then
 						for i,v in pairs(workspace:GetDescendants()) do
 							if v.Name == "TouchInterest" then
-								print(1)
+								print("TouchInterest")
 								firetouchinterest(character.Head, v.Parent, 0)
 							end
 						end
