@@ -365,13 +365,15 @@ runcode(function()
 	autoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "autoPickup",
 		["Function"] = function(callback)
+			local palyer = game.Players.LocalPlayer
+local proChar = palyer.Character or palyer.CharacterAdded:Wait()
 			if callback then
 				BindToStepped("autoPickup", 1, function()
 					wait(1)
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						local character = game.Players.LocalPlayer.Character
 							if v.Name == "TouchInterest" then
-								firetouchinterest(character:WaitForChild("Head"), v.Parent, 0)
+								firetouchinterest(proChar:WaitForChild("Head"), v.Parent, 0)
 							end
 						end
 				end)
