@@ -677,19 +677,26 @@ runcode(function()
 	})
 end)
 
--- runcode(function()
--- 	local getDroppedItems = {["Enabled"] = false};
+runcode(function() 
+	local autoPickup = {["Enabled"] = false}
 
--- 	getDroppedItems = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
--- 		["Name"] = "AutoPickup",
--- 		["Function"] = function(callback) 
--- 		if callback then
--- 			print("Test")
--- 		else
--- 			UnbindFromStepped("AutoPickup")
--- 		end
--- 	})
--- end)
+	autoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "AutoPickup"
+		["Function"] = function(callback)
+			if callback then
+				BindToStepped("AutoPickup", 10, function() 
+					for _,v in next, workspace:GetDescendants() do
+						if v.Name == "TouchInterest" then
+							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
+						end
+					end
+				end)
+			else
+				UnbindFromStepped("AutoPickup")
+			end
+		end
+	})
+end)
 
 runcode(function()
 	local AutoReport = {["Enabled"] = false}
