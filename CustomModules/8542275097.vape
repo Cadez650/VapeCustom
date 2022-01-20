@@ -363,12 +363,10 @@ GuiLibrary["RemoveObject"]("HitBoxesOptionsButton")
 
 runcode(function()
 	local autoPickup = {["Enabled"] = false}
-	local autoEnabled = false;
 	autoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "autoPickup",
 		["Function"] = function(callback)
 			if callback then
-				autoEnabled = true
 				BindToStepped("AutoPickup", 1, function()
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						if v.Name == "TouchInterest" then
