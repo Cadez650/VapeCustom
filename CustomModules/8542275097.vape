@@ -376,8 +376,6 @@ local proChar = palyer.Character or palyer.CharacterAdded:Wait()
 							end
 						end
 					until not callback;
-			end
-		end
 	})
 end)
 
