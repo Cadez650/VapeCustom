@@ -1,4 +1,5 @@
 -- Credits to Inf Yield & all the other scripts that helped me make bypasses
+repeat wait() until game.Players.Character
 local GuiLibrary = shared.GuiLibrary
 local players = game:GetService("Players")
 local textservice = game:GetService("TextService")
@@ -371,7 +372,7 @@ runcode(function()
 				repeat
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						if v.Name == "TouchInterest" then
-							firetouchinterest(gamme.Players.LocalPlayer.Character.Head, v.Parent, 0)
+							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
 						end
 					end
 				until autoEnabled = false
