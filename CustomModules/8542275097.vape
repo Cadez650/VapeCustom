@@ -3,6 +3,7 @@ local GuiLibrary = shared.GuiLibrary
 local players = game:GetService("Players")
 local textservice = game:GetService("TextService")
 local lplr = players.LocalPlayer
+local char = lplr.Character or lplr.CharacterAdded:Wait()
 local workspace = game:GetService("Workspace")
 local lighting = game:GetService("Lighting")
 local cam = workspace.CurrentCamera
@@ -677,27 +678,31 @@ runcode(function()
 	})
 end)
 
-runcode(function() 
-	local autoPickup = {["Enabled"] = false}
-
-	autoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-		["Name"] = "AutoPickup"
+runcode(function()
+	local AutoPickup = {["Enabled"] = false}
+	AutoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "AutoPickup",
 		["Function"] = function(callback)
 			if callback then
-				BindToStepped("autoPick", 10, function() 
-				if not isAlive() then return UnbindFromStepped("autoPick") end
-					for _,v in next, workspace:GetDescendants() do
-						if v.Name == "TouchInterest" then
-							firetouchinterest(game.Players.LocalPlayer.Character:WaitForChild("Head"), v.Parent, 0)
+				spawn(function()
+					BindToStepped("AutoPickup", debounce, function()
+						if isAlive() then
+							for i,v in pairs(workspace:GetDescendants) do
+								if v.Name == "TouchInterest" then
+									firetouchinterest(char.Head, v.Parent, 0)
+									print("Picked up " .. v.Parent.Name)
+								end
+							end
 						end
-					end
+					end)
 				end)
 			else
-				UnbindFromStepped("autoPick")
+				UnbindFromStepped("AutoPickup")
 			end
 		end
 	})
 end)
+
 
 runcode(function()
 	local AutoReport = {["Enabled"] = false}
