@@ -1,5 +1,5 @@
 -- Credits to Inf Yield & all the other scripts that helped me make bypasses
-repeat wait() until game.Players.Character
+repeat wait() until game.Players.LocalPlayer.Character
 local GuiLibrary = shared.GuiLibrary
 local players = game:GetService("Players")
 local textservice = game:GetService("TextService")
