@@ -377,8 +377,8 @@ runcode(function()
 			else
 				UnbindFromStepped("AutoPickup")
 			end
-		end)
 	})
+end)
 
 runcode(function()
 	local killaurabox = Instance.new("BoxHandleAdornment")
