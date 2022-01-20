@@ -44,7 +44,7 @@ end
 
 local function createwarning(title, text, delay)
 	pcall(function()
-		local frame = GuiLibrary["CreateNotification"](title, text, delay, "vape/assets/WarningNotification.png")
+		local frame = GuiLibrary["CreateNotification"](title, text, delay, "vape/assets/BlantantIcon.png")
 		frame.Frame.BackgroundColor3 = Color3.fromRGB(236, 129, 44)
 		frame.Frame.Frame.BackgroundColor3 = Color3.fromRGB(236, 129, 44)
 	end)
@@ -684,7 +684,7 @@ runcode(function()
 		["Name"] = "AutoPickup",
 		["Function"] = function(callback) 
 				if callback then
-					createwarning("AutoPickup", "AutoPickup is now enabled. This could cause performance issues!", 2.5)
+					CreateNotification("AutoPickup", "AutoPickup is now enabled. This could cause performance issues!", 2.5)
 					BindToStepped("AutoPickup", function()
 					for i,v in pairs( workspace:GetDescendants() ) do
 						if v.Name == "TouchInterest" then
