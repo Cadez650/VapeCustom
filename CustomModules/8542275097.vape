@@ -377,6 +377,7 @@ runcode(function()
 			else
 				UnbindFromStepped("AutoPickup")
 			end
+		end)
 	})
 end)
 
