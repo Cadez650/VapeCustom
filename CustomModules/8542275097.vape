@@ -369,15 +369,15 @@ runcode(function()
 		["Function"] = function(callback)
 			if callback then
 				autoEnabled = true
-				repeat
+				BindToStepped("AutoPickup", 1, function()
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						if v.Name == "TouchInterest" then
 							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
 						end
 					end
-				until autoEnabled = false
+				end)
 			else
-				autoEnabled = false
+				UnbindFromStepped("AutoPickup")
 			end
 		end)
 	})
