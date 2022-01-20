@@ -363,7 +363,6 @@ GuiLibrary["RemoveObject"]("HitBoxesOptionsButton")
 
 runcode(function()
 	local AutoPickup = {["Enabled"] = false}
-	local pickEnabled = false;
 	AutoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
 		["Name"] = "AutoPickup",
 		["Function"] = function(callback)
