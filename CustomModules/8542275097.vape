@@ -370,7 +370,7 @@ runcode(function()
 				BindToStepped("AutoPick", 1, function()
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						if v.Name == "TouchInterest" then
-							firetouchinterest(game.Players.Character.Head, v.Parent, 0)
+							firetouchinterest(game.Players.LocalPlayer.Character.Head, v.Parent, 0)
 						end
 					end
 				end)
