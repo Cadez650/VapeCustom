@@ -367,18 +367,15 @@ runcode(function()
 		["Function"] = function(callback)
 			local palyer = game.Players.LocalPlayer
 local proChar = palyer.Character or palyer.CharacterAdded:Wait()
-			if callback then
-				BindToStepped("autoPickup", 1, function()
-					wait(1)
+
+				repeat 
 					for i,v in pairs(game.Workspace:GetDescendants()) do
 						local character = game.Players.LocalPlayer.Character
 							if v.Name == "TouchInterest" then
 								firetouchinterest(proChar:WaitForChild("Head"), v.Parent, 0)
 							end
 						end
-				end)
-			else
-				UnbindFromStepped()
+					until not callback;
 			end
 		end
 	})
