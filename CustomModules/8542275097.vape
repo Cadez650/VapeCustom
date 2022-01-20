@@ -367,8 +367,9 @@ runcode(function()
 		["Function"] = function(callback)
 			if callback then
 				BindToStepped("autoPickup", 1, function()
-					if isAlive(lplr) then
-						for i,v in pairs(workspace:GetDescendants()) do
+					local lplr = game.Players.LocalPlayer
+					local character = lplr.Character or lplr.CharacterAdded:Wait()
+					for i,v in pairs(game.Workspace:GetDescendants()) do
 							if v.Name == "TouchInterest" then
 								firetouchinterest(character.Head, v.Parent, 0)
 							end
