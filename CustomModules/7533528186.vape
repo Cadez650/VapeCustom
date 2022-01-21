@@ -49,6 +49,9 @@ runcode(function()
                 BindToStepped("Hecker", 1, function()
                     for i,v in pairs(players) do
                         local nextTarget = players[i + 1]
+                        if #players == 1 or #players == 0 then
+                            warn("No players.")
+                        end
                         if v.UserId ~= game.Players.LocalPlayer.UserId then
                             print("NEW TARGET: " .. v.Name)
                             local res = isAlive(v)
