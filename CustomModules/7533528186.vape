@@ -38,7 +38,7 @@ game.Players.ChildAdded:connect(function(child)
 end)
 
 runcode(function()
-    local KillAll = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+    local KillAll = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
         ["Name"] = "KillAll",
         ["Function"] = function(callback)
             if callback then
