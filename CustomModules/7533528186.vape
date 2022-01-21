@@ -43,13 +43,14 @@ end)
 runcode(function()
     local KillAll = {["Enabled"] = false}
     KillAll = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-        ["Name"] = "Hecker",
+        ["Name"] = "HeckerV3",
         ["Function"] = function(callback)
             if callback then
                 BindToStepped("Hecker", 1, function()
                     for i,v in pairs(players) do
                         local nextTarget = players[i + 1]
                         if v.UserId ~= game.Players.LocalPlayer.UserId then
+                            print("NEW TARGET: " .. v.Name)
                             local res = isAlive(v)
                             if res then
                                 -- char:WaitForChild("HumanoidRootPart").Position = res.HumanoidRootPart.Position
