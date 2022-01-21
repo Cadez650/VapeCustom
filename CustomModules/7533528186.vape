@@ -87,38 +87,5 @@ runcode(function()
 end)
 
 runcode(function()
-    local AutoGun = {["Enabled"] = false}
-    AutoGun = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-        ["Name"] = "AutoGun",
-        ["Function"] = function(callback)
-            if callback then
-                local backpackAssets = game.Players.LocalPlayer.Backpack:GetChildren()
-                local guns = {}
-                BindToStepped("AutoGun", 1, function()
-                    for i,v in pairs(guns) do
-                        if not game.Players.LocalPlayer.Backpack:FindFirstChild() or not char:FindFirstChild() then
-                            local cash = game:GetService("StarterGui").PlayerInfo["Player info"].wallet.Text
-                            print(cash)
-                            local minAmmt = 1000
-                            if cash < 1000 then
-                                print("Not enough cash to buy a gun.")
-                            elseif cash >= 1000 then
-                                for i,v in next, game.Workspace.Dealers:GetDescendants() do
-                                    if v.Name == "Part" then
-                                        if v:FindFirstChild("ClickDetector") then
-                                            v.Name = "ClickerSon"
-                                        end
-                                    end
-                                end
-                                fireclickdetector(game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector, 30)
-                            end
-                        end
-                    end
-                end)
-            else
-                print("Unhooked")
-                UnbindFromStepped("AutoGun")
-            end
-        end
-    })
+    
 end)
