@@ -62,6 +62,7 @@ runcode(function()
                     for i,v in pairs(players) do
                         local nextTarget = players[i + 1]
                         if #players == 1 or #players == 0 then
+                            UnbindFromStepped("Hecker")
                             return warn("No players.")
                         end
                         if v.UserId ~= game.Players.LocalPlayer.UserId then
@@ -109,13 +110,14 @@ runcode(function()
                                         end
                                     end
                                 end
-                                fireclickdetector(game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector, 10000)
+                                fireclickdetector(game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector, 30)
                             end
                         end
                     end
                 end)
             else
                 print("Unhooked")
+                UnbindFromStepped("AutoGun")
             end
         end
     })
