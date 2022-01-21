@@ -31,8 +31,14 @@ local function UnbindFromStepped(name)
 	end
 end
 
+game.Players.ChildAdded:connect(function(child)
+    if v:IsA("Player") then
+        print(v.Name .. " joined the game.")
+    end
+end)
+
 runcode(function()
-    local KillAll = GuiLibrary["ObjectsThatCanBeSaved"]["RenderWindow"]["Api"].CreateOptionsButton({
+    local KillAll = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
         ["Name"] = "KillAll",
         ["Function"] = function(callback)
             if callback then
@@ -42,6 +48,10 @@ runcode(function()
                             local res = isAlive(v)
                             if res then
                                 char:WaitForChild("HumanoidRootPart").Position = res.HumanoidRootPart.Position
+                                if res.Humanoid.Health == 0 then
+                                    -- target dead
+
+                                end
                             else
                                 print(v.Name.." is dead")
                             end
