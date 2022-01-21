@@ -80,7 +80,7 @@ end)
 
 runcode(function()
     local AutoGun = {["Enabled"] = false}
-    AutoGun = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+    AutoGun = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
         ["Name"] = "AutoGun",
         ["HoverText"] = "Automatically gets a gun for you.",
         ["Function"] = function(callback)
