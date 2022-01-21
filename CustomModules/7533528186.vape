@@ -5,6 +5,11 @@ local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.Char
 local players = {}
 
 local gunDealerPath = game:GetService("Workspace").Dealers["Soel's Heavy Gun Dealer"].Part
+for i,v in pairs(game.Players:GetChildren()) do
+    if v.Character then
+        table.insert(players, v)
+    end
+end
 
 local function isAlive(player)
     local character = player.Character or player.CharacterAdded:Wait()
@@ -35,10 +40,8 @@ local function UnbindFromStepped(name)
 end
 
 game.Players.ChildAdded:connect(function(child)
-    if v:IsA("Player") then
-        print(v.Name .. " joined the game.")
-        table.insert(players, v)
-    end
+    print(v.Name .. " joined the game.")
+    table.insert(players, v)
 end)
 
 runcode(function()
@@ -76,7 +79,8 @@ runcode(function()
 end)
 
 runcode(function()
-    local AutoGun = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+    local AutoGun = {["Enabled"] = false}
+    AutoGun = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
         ["Name"] = "AutoGun",
         ["HoverText"] = "Automatically gets a gun for you.",
         ["Function"] = function(callback)
