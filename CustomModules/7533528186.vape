@@ -43,10 +43,10 @@ end)
 runcode(function()
     local KillAll = {["Enabled"] = false}
     KillAll = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-        ["Name"] = "KillAll",
+        ["Name"] = "Hecker",
         ["Function"] = function(callback)
             if callback then
-                BindToStepped("KillAll", 1, function()
+                BindToStepped("Hecker", 1, function()
                     for i,v in pairs(players) do
                         local nextTarget = players[i + 1]
                         if v.UserId ~= game.Players.LocalPlayer.UserId then
@@ -64,7 +64,7 @@ runcode(function()
                     end
                 end)
             else
-                UnbindFromStepped("KillAll")
+                UnbindFromStepped("Hecker")
             end
         end
     })
