@@ -4,6 +4,7 @@ local stepTable = {}
 local char = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:wait()
 local players = {}
 
+local gunDealerPath = game:GetService("Workspace").Dealers["Soel's Heavy Gun Dealer"].Part
 
 local function isAlive(player)
     local character = player.Character or player.CharacterAdded:Wait()
@@ -43,7 +44,7 @@ end)
 runcode(function()
     local KillAll = {["Enabled"] = false}
     KillAll = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
-        ["Name"] = "HeckerV3",
+        ["Name"] = "KillAll",
         ["Function"] = function(callback)
             if callback then
                 BindToStepped("Hecker", 1, function()
@@ -69,6 +70,42 @@ runcode(function()
                 end)
             else
                 UnbindFromStepped("Hecker")
+            end
+        end
+    })
+end)
+
+runcode(function()
+    local AutoGun = GuiLibrary["ObjectsThatCanBeSaved"]["BlantantWindow"]["Api"].CreateOptionsButton({
+        ["Name"] = "AutoGun",
+        ["HoverText"] = "Automatically gets a gun for you.",
+        ["Function"] = function(callback)
+            if callback then
+                local backpackAssets = game.Players.LocalPlayer.Backpack:GetChildren()
+                local guns = {}
+                BindToStepped("AutoGun", 1, function()
+                    for i,v in pairs(guns) do
+                        if not game.Players.LocalPlayer.Backpack:FindFirstChild() or not char:FindFirstChild() then
+                            local cash = game:GetService("StarterGui").PlayerInfo["Player info"].wallet.Text
+                            print(cash)
+                            local minAmmt = 1000
+                            if cash < 1000 then
+                                print("Not enough cash to buy a gun.")
+                            elseif cash >= 1000 then
+                                for i,v in next, game.Workspace.Dealers:GetDescendants() do
+                                    if v.Name == "Part" then
+                                        if v:FindFirstChild("ClickDetector") then
+                                            v.Name = "ClickerSon"    
+                                        end
+                                    end
+                                end
+                                
+                                fireclickdetector(game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector, game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector.MaxActivationDistance.Value)
+                            end
+                        end
+                    end
+                end)
+            else
             end
         end
     })
