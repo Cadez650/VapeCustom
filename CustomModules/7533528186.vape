@@ -82,7 +82,6 @@ runcode(function()
     local AutoGun = {["Enabled"] = false}
     AutoGun = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
         ["Name"] = "AutoGun",
-        ["HoverText"] = "Automatically gets a gun for you.",
         ["Function"] = function(callback)
             if callback then
                 local backpackAssets = game.Players.LocalPlayer.Backpack:GetChildren()
@@ -109,6 +108,7 @@ runcode(function()
                     end
                 end)
             else
+                print("Unhooked")
             end
         end
     })
