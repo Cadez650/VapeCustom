@@ -95,11 +95,10 @@ runcode(function()
                                 for i,v in next, game.Workspace.Dealers:GetDescendants() do
                                     if v.Name == "Part" then
                                         if v:FindFirstChild("ClickDetector") then
-                                            v.Name = "ClickerSon"    
+                                            v.Name = "ClickerSon"
                                         end
                                     end
                                 end
-                                
                                 fireclickdetector(game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector, game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector.MaxActivationDistance.Value)
                             end
                         end
