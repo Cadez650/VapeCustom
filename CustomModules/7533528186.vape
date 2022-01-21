@@ -6,7 +6,7 @@ local players = {}
 
 local gunDealerPath = game:GetService("Workspace").Dealers["Soel's Heavy Gun Dealer"].Part
 for i,v in pairs(game.Players:GetChildren()) do
-    if v.Character then
+    if v.Character and game.Players.LocalPlayer.Name ~= v.Name then
         table.insert(players, v)
     end
 end
