@@ -49,8 +49,7 @@ runcode(function()
                             if res then
                                 char:WaitForChild("HumanoidRootPart").Position = res.HumanoidRootPart.Position
                                 if res.Humanoid.Health == 0 then
-                                    -- target dead
-
+                                    print(res.Name .. " has been killed!")
                                 end
                             else
                                 print(v.Name.." is dead")
