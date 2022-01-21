@@ -1,0 +1,19 @@
+local function isAlive(player)
+    local character = player.Character or player.CharacterAdded:Wait()
+
+    if character:WaitForChild("Humanoid").Health > 1 then
+        return true
+    elseif character:WaitForChild("Humanoid").Health == 0 then
+        return false
+    end
+end
+
+for i,v in pairs(game.Players:GetPlayers()) do
+    local result = isAlive(v)
+
+    if result == true then
+        print("Player " .. v.Name .. " is alive!")
+    else
+        print("Player " .. v.Name .. " is dead!")
+    end
+end
