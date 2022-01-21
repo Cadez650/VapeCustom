@@ -39,6 +39,14 @@ local function UnbindFromStepped(name)
 	end
 end
 
+local function playerLeftConnection(v)
+    game.Players.PlayerRemoving:Connect(function(player)
+        if player.Name == v.Name then
+            return true
+        end
+    end)
+end
+
 game.Players.ChildAdded:connect(function(child)
     print(child.Name .. " joined the game.")
     table.insert(players, v)
@@ -54,10 +62,9 @@ runcode(function()
                     for i,v in pairs(players) do
                         local nextTarget = players[i + 1]
                         if #players == 1 or #players == 0 then
-                            warn("No players.")
+                            return warn("No players.")
                         end
                         if v.UserId ~= game.Players.LocalPlayer.UserId then
-                            print("NEW TARGET: " .. v.Name)
                             local res = isAlive(v)
                             if res then
                                 -- char:WaitForChild("HumanoidRootPart").Position = res.HumanoidRootPart.Position
@@ -102,7 +109,7 @@ runcode(function()
                                         end
                                     end
                                 end
-                                fireclickdetector(game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector, game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector.MaxActivationDistance.Value)
+                                fireclickdetector(game.Workspace.Dealers["Soel's Heavy Gun Dealer"].ClickerSon.ClickDetector, 10000)
                             end
                         end
                     end
