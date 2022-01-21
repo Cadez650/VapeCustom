@@ -40,7 +40,7 @@ local function UnbindFromStepped(name)
 end
 
 game.Players.ChildAdded:connect(function(child)
-    print(v.Name .. " joined the game.")
+    print(child.Name .. " joined the game.")
     table.insert(players, v)
 end)
 
