@@ -8,12 +8,14 @@ local function isAlive(player)
     end
 end
 
-for i,v in pairs(game.Players:GetPlayers()) do
-    local result = isAlive(v)
-
-    if result == true then
-        print("Player " .. v.Name .. " is alive!")
-    else
-        print("Player " .. v.Name .. " is dead!")
+game["Run Service"].RenderStepped:connect(function()
+    for i,v in pairs(game.Players:GetPlayers()) do
+        local result = isAlive(v)
+    
+        if result == true then
+            print("Player " .. v.Name .. " is alive!")
+        else
+            print("Player " .. v.Name .. " is dead!")
+        end
     end
-end
+end)
