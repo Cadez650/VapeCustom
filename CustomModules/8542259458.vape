@@ -1295,3 +1295,22 @@ runcode(function()
 	})
 	AutoToxicPhrases5["Object"].AddBoxBKG.AddBox.TextSize = 12
 end)
+
+runcode(function()
+	local AutoPickup = {["Enabled"] = false}
+	local AutoPickupDebugMode = {["Enabled"] = false}
+	AutoPickup = GuiLibrary["ObjectsThatCanBeSaved"]["BlatantWindow"]["Api"].CreateOptionsButton({
+		["Name"] = "AutoPickup",
+		["Function"] = function() end
+	})
+	AutoPickup.CreateToggle({
+		["Name"] = "DebugMode",
+		["Function"] = function(callback)
+		if callback then
+			print("Enabled Debug Mode")
+		else
+			print("Disabled Debug Mode")
+		end
+	end)
+	})
+end)
